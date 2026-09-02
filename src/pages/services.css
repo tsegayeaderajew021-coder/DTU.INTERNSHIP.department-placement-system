@@ -1,0 +1,66 @@
+.services-container {
+    background-color: #f8fbff;
+    min-height: 100vh;
+}
+
+/* Service Card Styling */
+.service-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05) !important;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Icon Styling */
+.icon-wrapper {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f3d6e, #1a5ca3);
+    border-radius: 15px;
+}
+
+.icon-wrapper .icon {
+    color: white;
+}
+
+/* Badge Styling */
+.bg-soft-primary {
+    background-color: rgba(15, 61, 110, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Link Styling */
+.btn-link {
+    color: #0f3d6e;
+    transition: margin-left 0.2s;
+}
+
+.btn-link:hover {
+    margin-left: 5px;
+    color: #1a5ca3;
+}
+
+/* Search Box Shadow */
+.search-box {
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-5 {
+        font-size: 2rem;
+    }
+    .service-card {
+        padding: 20px !important;
+    }
+}

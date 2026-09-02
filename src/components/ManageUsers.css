@@ -1,0 +1,13 @@
+.manage-users-edit-button {
+  border: 1px solid #1d5c96;
+  background: #2467a8;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.manage-users-edit-button:hover,
+.manage-users-edit-button:focus {
+  border-color: #164a7b;
+  background: #1b568c;
+  color: #ffffff;
+}

@@ -1,6 +1,51 @@
-# Getting Started with Create React App
+# Student Placement Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based admin portal for managing student placements, departments, bulk data import, system configuration, and audit logs.
+
+## Project Structure
+
+- `src/` — React application source code
+- `public/` — public assets and HTML template
+- `import_api.php` — backend endpoint for import uploads
+- `departments_api.php` — department management backend
+- `users_api.php` — user management backend
+
+## Development Setup
+
+This project is split between a frontend React app and a PHP backend.
+
+### Frontend
+
+Use PowerShell in the frontend folder:
+
+```powershell
+PS C:\Users\hp\student-placement> npm install
+PS C:\Users\hp\student-placement> npm start
+```
+
+The React app runs at:
+
+- `http://localhost:3000`
+
+### Backend
+
+Use PowerShell in the XAMPP htdocs folder:
+
+```powershell
+PS C:\xampp1\htdocs\placment_backend>
+```
+
+Make sure the following PHP files are located inside `C:\xampp1\htdocs\placment_backend`:
+
+- `users_api.php`
+- `departments_api.php`
+- `import_api.php`
+
+Then start Apache from XAMPP.
+
+The backend API base is:
+
+- `http://localhost/placment_backend`
 
 ## Available Scripts
 
@@ -8,16 +53,11 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Runs the app in the development mode.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
@@ -33,11 +73,41 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## API Usage
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The frontend is configured to connect to the backend at `http://localhost/placment_backend`.
+
+### Import endpoint
+
+- `POST /import_api.php`
+- Accepts `multipart/form-data`
+- Fields:
+  - `dataFile` — uploaded CSV file
+  - `type` — `student` or `grade`
+
+Example with `curl`:
+
+```bash
+curl -X POST \
+  -F "dataFile=@students.csv" \
+  -F "type=student" \
+  http://localhost/placment_backend/import_api.php
+```
+
+### User management
+
+- `GET /users_api.php` — list users
+- `POST /users_api.php` — create user
+- `PUT /users_api.php?id={id}` — update user
+- `DELETE /users_api.php?id={id}` — delete user
+
+### Department management
+
+- `GET /departments_api.php` — list departments
+- `POST /departments_api.php` — create department
+- `DELETE /departments_api.php?id={id}` — delete department
 
 ## Learn More
 

@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #e6e7ea;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -36,3 +36,119 @@
     transform: rotate(360deg);
   }
 }
+
+/* Hero image clarity and brightness fixes (overrides) */
+/* Applied globally here to avoid editing page-specific CSS files. */
+.home-hero__slide {
+  /* ensure full-bleed crisp rendering */
+  background-size: cover !important;
+  background-position: center center !important;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: opacity, transform;
+  /* remove any desaturate/blur filters applied by animations */
+  filter: none !important;
+  image-rendering: auto !important;
+}
+
+.home-hero__overlay {
+  /* use a subtle dark overlay to improve contrast without dimming the image */
+  background: linear-gradient(90deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.18) 42%, rgba(0,0,0,0.06) 100%) !important;
+  color: #ffffff;
+}
+
+.home-hero__content,
+.home-hero__title,
+.home-hero__text,
+.home-hero__badge {
+  color: #ffffff !important;
+}
+
+/* Slight boost to contrast and saturation for hero images in modern browsers */
+.home-hero__slide img,
+.home-hero__slide {
+  -webkit-filter: contrast(1.06) saturate(1.06) !important;
+  filter: contrast(1.06) saturate(1.06) !important;
+}
+
+/* Prevent large-scale blur during slide keyframes on lower-powered devices */
+@media (prefers-reduced-motion: reduce) {
+  .home-hero__slide {
+    animation: none !important;
+  }
+}
+
+/* Professional UI tokens and global element styles */
+:root{
+  --dtu-bg: #f6f8fb;
+  --dtu-surface: #ffffff;
+  --dtu-primary: #0f3d6e;
+  --dtu-primary-600: #2150d6;
+  --dtu-accent: #1d6ca8;
+  --dtu-muted: #6c757d;
+  --dtu-success: #198754;
+  --dtu-danger: #dc3545;
+  --dtu-radius: 12px;
+  --dtu-shadow-sm: 0 6px 18px rgba(15,23,42,0.06);
+  --dtu-shadow-md: 0 14px 40px rgba(15,23,42,0.08);
+  --dtu-font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+html,body,#root{height:100%;}
+body{
+  font-family: var(--dtu-font-sans);
+  background: var(--dtu-bg);
+  color: #0f1724;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.5;
+}
+
+/* Cards */
+.card{
+  border: none;
+  border-radius: var(--dtu-radius);
+  background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,251,253,0.98));
+  box-shadow: var(--dtu-shadow-sm);
+}
+.summary-card{padding:1.25rem;border-radius:1rem}
+.summary-label{font-size:.78rem;color:var(--dtu-muted);text-transform:uppercase;letter-spacing:.08em}
+.summary-value{font-size:1.9rem;margin:0;color:var(--dtu-primary)}
+
+/* Buttons */
+.btn-primary{
+  background: linear-gradient(135deg,var(--dtu-primary),var(--dtu-accent));
+  border: none;color:#fff;font-weight:700;padding:.6rem 1rem;border-radius:10px;box-shadow:0 10px 24px rgba(15,61,110,0.12);
+}
+.btn-outline-primary{border:1px solid rgba(15,61,110,0.12);color:var(--dtu-primary);background:transparent}
+.btn-sm{padding:.35rem .6rem}
+
+/* Forms */
+.form-control{border-radius:10px;border:1px solid #e6eef8;padding:.6rem .9rem}
+.form-control:focus{box-shadow:0 8px 20px rgba(15,61,110,0.06);border-color:var(--dtu-primary)}
+.form-label{font-weight:600;color:#102035}
+
+/* Tables */
+.table thead th{background:transparent;border-bottom:1px solid #e9eef6;color:#263445}
+.table-hover tbody tr:hover{background:rgba(15,61,110,0.03)}
+
+/* Alerts */
+.alert{border-radius:8px}
+
+/* Utilities */
+.text-muted{color:var(--dtu-muted)!important}
+.badge-primary{background:var(--dtu-primary);color:#fff}
+
+/* Responsive container tweaks for dashboards */
+@media(min-width:992px){
+  .admin-dashboard .main-content{padding:3.5rem}
+}
+
+/* Accessible focus ring */
+*:focus{outline:3px solid rgba(33,80,214,0.14);outline-offset:2px}
+
+/* Small improvements for footer and header spacing */
+.custom-header, footer{transition:box-shadow .2s ease,background .2s ease}
+
+/* End of professional UI styles */

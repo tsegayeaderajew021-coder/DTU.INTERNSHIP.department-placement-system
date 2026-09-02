@@ -1,0 +1,10 @@
+.edit-user-page {
+  padding-top: 190px;
+  padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .edit-user-page {
+    padding-top: 170px;
+  }
+}
