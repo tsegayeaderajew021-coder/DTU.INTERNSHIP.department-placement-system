@@ -1,16 +1,16 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import Header from './components/Header';
-import Login from './pages/Login';
-import StudentRegistration from './pages/StudentRegistration';
+import Header from './components/layout/Header.jsx';
+import Login from './pages/public/Login.jsx';
+import StudentRegistration from './pages/registrar/StudentRegistration.jsx';
 import {
   parseYesNo as parseRegistrarYesNo,
   filterStudentIdsForPlacement,
-} from './pages/RegistrarDashboard';
-import { parseYesNo as parseStudentYesNo } from './pages/StudentDashboard';
-import api from './api';
+} from './pages/registrar/RegistrarDashboard.jsx';
+import { parseYesNo as parseStudentYesNo } from './pages/student/StudentDashboard.jsx';
+import api from './services/api';
 
-jest.mock('./api', () => ({
+jest.mock('./services/api', () => ({
   __esModule: true,
   default: {
     get: jest.fn(),
@@ -59,7 +59,7 @@ describe('Login', () => {
     fireEvent.click(screen.getByRole('button', { name: /login/i }));
 
     await waitFor(() => {
-      expect(api.post).toHaveBeenCalledWith('/login.php', {
+      expect(api.post).toHaveBeenCalledWith('auth/login.php', {
         identifier: 'marta',
         password: 'secret123',
       });

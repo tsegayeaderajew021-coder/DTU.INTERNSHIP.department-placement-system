@@ -4,7 +4,7 @@ html { overflow-x: hidden; }
 body { min-width: 320px; overflow-x: hidden; }
 img, video, canvas { max-width: 100%; height: auto; }
 button, input, select, textarea { max-width: 100%; }
-.app-main:not(.dashboard-main) { padding-top: 160px; }
+.app-main:not(.dashboard-main) { padding-top: 190px; }
 .responsive-sidebar { color: #fff; background: #212529; }
 .sidebar-nav-item { width: 100%; color: rgba(255,255,255,.85); background: rgba(255,255,255,.05); border: 1px solid transparent; }
 .sidebar-nav-item:hover, .sidebar-nav-item.active { color: #1b2b56; background: #fff; }

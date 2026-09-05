@@ -1,26 +1,21 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import Services from "./pages/Services";
-import Contact from "./pages/Contact";
-import Login from "./pages/Login";
-import AdminDashboard from "./pages/Admin_Dashboard";
-import RegistrarDashboard from "./pages/RegistrarDashboard";
-import EditUser from "./pages/EditUser";
-import EditDepartment from "./components/EditDepartment";
-import StudentDashboard from "./pages/StudentDashboard";
-import HeadDashboard from "./pages/HeadDashboard";
-import StudentRegistration from "./pages/StudentRegistration";
-import AssignHead from "./components/AssignHead";
-import MissingScoresForm from "./components/MissingScoresForm";
-import axios from 'axios';
+import Header from "./components/layout/Header.jsx";
+import Footer from "./components/layout/Footer.jsx";
+import Home from "./pages/public/Home.jsx";
+import Services from "./pages/public/Services.jsx";
+import Contact from "./pages/public/Contact.jsx";
+import Login from "./pages/public/Login.jsx";
+import AdminDashboard from "./pages/admin/Admin_Dashboard.jsx";
+import RegistrarDashboard from "./pages/registrar/RegistrarDashboard.jsx";
+import EditUser from "./pages/admin/EditUser.jsx";
+import EditDepartment from "./pages/admin/EditDepartment.jsx";
+import StudentDashboard from "./pages/student/StudentDashboard.jsx";
+import HeadDashboard from "./pages/head/HeadDashboard.jsx";
+import StudentRegistration from "./pages/registrar/StudentRegistration.jsx";
+import AssignHead from "./pages/admin/AssignHead.jsx";
+import MissingScoresForm from "./pages/registrar/MissingScoresForm.jsx";
 
-const api = axios.create({
-  baseURL: 'http://localhost/placment_backend/', // ያንተ Path
-  withCredentials: true // ይህ በጣም አስፈላጊ ነው ሴሽኑ እንዲሰራ
-});
 function AppRoutes() {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin-dashboard') || location.pathname.startsWith('/registrar-dashboard') || location.pathname.startsWith('/head-dashboard') || location.pathname.startsWith('/student-dashboard') || location.pathname.startsWith('/edit-user') || location.pathname.startsWith('/edit-department') || location.pathname.startsWith('/admin/assign-head');
